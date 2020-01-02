@@ -24,6 +24,7 @@ function doStuff(data) {
     });
 }
 
+// success message will be displayed
 doStuff(true).then(
     (successMessage) => {
         console.log(successMessage);
@@ -32,3 +33,14 @@ doStuff(true).then(
         console.log(errorMessage);
     }
 );
+
+// error message will be displayed
+doStuff(false).then(
+    (successMessage) => {
+        console.log(successMessage);
+    },
+    (errorMessage) => {
+        console.log(errorMessage);
+    }
+);
+
