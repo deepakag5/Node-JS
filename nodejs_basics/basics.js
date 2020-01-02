@@ -24,8 +24,8 @@ console.log(p);
 // constant type
 const z = 5;
 
-// below will throw an error as we cannot reassign to a constant var
-//z = 6;
+
+//z = 6; // this will throw an error as we cannot reassign to a constant var
 
 // AND, OR, NOT operations
 var p = true;
@@ -51,3 +51,23 @@ var student = {
 console.log(student);
 console.log(student.firstname);
 console.log(student.age);
+
+// arrays
+var x = [10, 20, 30];
+var y = [10, 20, "David", true];
+
+console.log(x[0]);
+console.log(y[2]);
+
+console.log(x.length);
+
+
+x[2] = 40; // reassign array value
+console.log(x);
+
+x.push(50, 60); // add values to array
+console.log(x);
+
+x.pop();    // remove last value
+console.log(x);
+
