@@ -45,9 +45,28 @@ doStuff(false).then(
 );
 
 
+// chained for true and then true
 doStuff(true).then(
     () => {
         console.log("First doStuff resolved");
+    }
+).then(
+    () => {
+        console.log("Second doStuff resolved");
+    }
+).catch(
+    () => {
+        console.log("An error occured");
+    }
+);
+
+// chained for true and then false
+
+doStuff(true).then(
+    () => {
+        let a = false;
+        console.log("First doStuff resolved");
+        return doStuff(a);
     }
 ).then(
     () => {
