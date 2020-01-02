@@ -44,3 +44,19 @@ doStuff(false).then(
     }
 );
 
+
+doStuff(true).then(
+    () => {
+        console.log("First doStuff resolved");
+    }
+).then(
+    () => {
+        console.log("Second doStuff resolved");
+    }
+).catch(
+    () => {
+        console.log("An error occured");
+    }
+);
+
+
