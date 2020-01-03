@@ -16,3 +16,5 @@ app.get('/', (req, res) => {
 app.listen(3000, () => {
     console.log("Web server listening on port 3000 !");
 })
+
+// finally to launch the web server run the command - node server.js
