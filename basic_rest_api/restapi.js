@@ -19,3 +19,6 @@ app.post('/hello', (req, res) => {
     res.json(body);
 });
 
+app.listen(3000, () => {
+    console.log("Server listening on port 3000!");
+})
