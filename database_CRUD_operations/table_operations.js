@@ -63,7 +63,7 @@ dynamodb.describeTable({
 
 // update table with increased read capacity
 dynamodb.updateTable({
-    TableName: "td_notes_sdk",
+    TableName: "test_table_ops",
     ProvisionedThroughput: {
         ReadCapacityUnits: 2,
         WriteCapacityUnits: 1
@@ -78,7 +78,7 @@ dynamodb.updateTable({
 
 // delete table - using describe table after this should give an error
 dynamodb.deleteTable({
-    TableName: "td_notes_sdk"
+    TableName: "test_table_ops"
 }, (err, data) => {
     if (err) {
         console.log(err);
