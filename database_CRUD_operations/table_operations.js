@@ -1,9 +1,10 @@
+// get the required package
 const AWS = require("aws-sdk");
-
+// specify the region and resource
 AWS.config.update({region: 'us-east-2'});
-
 const dynamodb = new AWS.DynamoDB();
 
+// list tables
 dynamodb.listTables({}, (err, data) => {
     if (err) {
         console.log(err);
@@ -12,7 +13,7 @@ dynamodb.listTables({}, (err, data) => {
     }
 });
 
-
+// create table
 dynamodb.createTable({
     TableName: "test_table_ops",
     AttributeDefinitions: [
@@ -48,6 +49,7 @@ dynamodb.createTable({
     }
 });
 
+// describe table
 dynamodb.describeTable({
     TableName: "test_table_ops"
 }, (err, data) => {
@@ -59,12 +61,24 @@ dynamodb.describeTable({
 });
 
 
+// update table with increased read capacity
 dynamodb.updateTable({
     TableName: "td_notes_sdk",
     ProvisionedThroughput: {
         ReadCapacityUnits: 2,
         WriteCapacityUnits: 1
     }
+}, (err, data) => {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log(JSON.stringify(data, null, 2));
+    }
+});
+
+// delete table - using describe table after this should give an error
+dynamodb.deleteTable({
+    TableName: "td_notes_sdk"
 }, (err, data) => {
     if (err) {
         console.log(err);
