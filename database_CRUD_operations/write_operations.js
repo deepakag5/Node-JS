@@ -60,3 +60,19 @@ docClient.update({
     }
 });
 
+docClient.delete({
+    TableName: 'test_table_ops',
+    Key: {
+        user_id: 'user_1',
+        timestamp: 1
+    }
+}, (err, data)
+{
+    if (err) {
+        console.log(err);
+    } else {
+        console.log(data);
+    }
+}
+)
+
