@@ -31,14 +31,32 @@ docClient.put({
         title: 'title_2',
         content: 'content_2'
     }
-}, (err, data)
-{
+}, (err, data) => {
     if (err) {
         console.log(err);
     } else {
         console.log(data);
     }
-}
-)
-;
+});
+
+docClient.update({
+    TableName: 'test_table_ops',
+    Key: {
+        user_id: 'user_1',
+        timestamp: 2
+    },
+    UpdateExpression: 'set #t = :t',
+    ExpressionAttributeNames: {
+        '#t': 'title'
+    },
+    ExpressionAttributeValues: {
+        ':t': 'update title'
+    }
+}, (err, data) => {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log(data);
+    }
+});
 
