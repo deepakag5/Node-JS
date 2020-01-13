@@ -66,7 +66,7 @@ docClient.delete({
         user_id: 'user_1',
         timestamp: 1
     }
-}, (err, data)
+    }, (err, data) =>
 {
     if (err) {
         console.log(err);
@@ -74,5 +74,45 @@ docClient.delete({
         console.log(data);
     }
 }
-)
+);
+
+docClient.batchWrite({
+    RequestItems: {
+        'test_table_ops': [
+            {
+                DeleteRequest: {
+                    Key: 'user_1',
+                    timestamp: 2
+                }
+            },
+            {
+                PutRequest: {
+                    Item: {
+                        user_id: 'user_2',
+                        timestamp: 1,
+                        title: 'title_2',
+                        content: 'content_2'
+                    }
+                }
+            },
+            {
+                PutRequest: {
+                    Item: {
+                        user_id: 'user_3',
+                        timestamp: 1,
+                        title: 'title_3',
+                        content: 'content_3'
+                    }
+                }
+            }
+        ]
+    }
+
+}, (err, data) => {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log(data);
+    }
+});
 
