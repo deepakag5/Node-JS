@@ -22,3 +22,23 @@ docClient.put({
     }
 });
 
+
+docClient.put({
+    TableName: 'test_table_ops',
+    Item: {
+        user_id: 'user_1',
+        timestamp: 2,
+        title: 'title_2',
+        content: 'content_2'
+    }
+}, (err, data)
+{
+    if (err) {
+        console.log(err);
+    } else {
+        console.log(data);
+    }
+}
+)
+;
+
