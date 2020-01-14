@@ -45,3 +45,35 @@ docClient.scan({
         console.log(data);
     }
 });
+
+
+docClient.batchGet({
+    RequestItems: {
+        'test_table_ops': {
+            Keys: [
+                {
+                    user_id: 'user_1',
+                    timestamp: 1
+                },
+                {
+                    user_id: 'user_2',
+                    timestamp: 2
+                }
+            ]
+        },
+        'test_read_ops': {
+            Keys: [
+                {
+                    user_id: 'user_read_1',
+                    timestamp: 1
+                }
+            ]
+        }
+    }
+}, (err, data) => {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log(JSON.stringify(data, null, 2));
+    }
+});
