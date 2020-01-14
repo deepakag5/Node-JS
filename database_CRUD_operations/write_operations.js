@@ -116,3 +116,28 @@ docClient.batchWrite({
     }
 });
 
+
+// conditional write
+// add row for user_2 only if timestamp value is not equal to 1
+docClient.put({
+    TableName: 'test_table_ops',
+    Item: {
+        user_id: 'user_2',
+        timestamp: 2,
+        title: 'title_2_2',
+        content: 'content_2_2'
+    },
+    ConditionExpression: '#t <> :t',
+    ExpressionAttributeNames: {
+        '#t': 'timestamp'
+    },
+    ExpressionAttributeValues: {
+        ':t': 2
+    }
+}, (err, data) => {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log(data)
+    }
+})
