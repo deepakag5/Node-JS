@@ -3,6 +3,7 @@ AWS.config.update({region: 'us-east-2'});
 
 const docClient = new AWS.DynamoDB.DocumentClient();
 
+// read a single item matching condition
 docClient.get({
     TableName: 'test_table_ops',
     Key: {
@@ -17,6 +18,8 @@ docClient.get({
     }
 });
 
+
+// read operations only within partition
 docClient.query({
     TableName: 'test_table_ops',
     KeyConditionExpression: "user_id= :uid",
@@ -31,7 +34,7 @@ docClient.query({
     }
 });
 
-
+// read operations across partition
 docClient.scan({
     TableName: "test_table_ops",
     FilterExpression: "cat=:cat",
@@ -46,7 +49,7 @@ docClient.scan({
     }
 });
 
-
+// reaad multiple items and tables
 docClient.batchGet({
     RequestItems: {
         'test_table_ops': {
