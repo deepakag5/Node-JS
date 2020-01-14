@@ -140,4 +140,4 @@ docClient.put({
     } else {
         console.log(data)
     }
-})
+});
